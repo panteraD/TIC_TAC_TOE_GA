@@ -106,6 +106,7 @@ public class NeuralTicTacToe {
 	 *            can be omitted, otherwise the full class names are required.
 	 */
 	public static void main(final String[] args) {
+		System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
 		try {
 			final NeuralTicTacToe ttt = new NeuralTicTacToe();
 
@@ -173,7 +174,7 @@ public class NeuralTicTacToe {
 			now = new Date();
 			minutes = (int) (now.getTime() - started.getTime()) / 1000;
 			minutes /= 60;
-		} while (minutes < NeuralTicTacToe.TRAIN_MINUTES && train.getScore()>0.0001);
+		} while (minutes < NeuralTicTacToe.TRAIN_MINUTES );
 
 		train.getPool().shutdownNow();
 		SerializeObject.save("tictactoe.net", train.getNetwork());
